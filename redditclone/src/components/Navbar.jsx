@@ -5,18 +5,18 @@ export default function Navbar() {
             <nav className = "flex justify-between pl-8 pr-8 pt-4 pb-4" >
 
                 <div className = "flex">
-                    <img className = "pr-8" src = { logo }/>
-                    <h1>Chatting For All</h1>
+                    <img className = "pr-8 max-h-15" src = { logo }/>
+                    <h1 className="text-2xl pt-3">Chatting For All</h1>
                 </div>
                 
-                <div className = "flex">
-                    <button className = "rounded-md pl-2 pr-2 pb-1 pt-1 bg-indigo-500"
+                <div className = "flex  self-center">
+                    <button className = "mt-1 rounded-3xl bg-zinc-700 pl-3 pr-3 pt-2 pb-3 mb-5 text-xl text-white"
                         id="login"
                         onClick={()=>login()}
                         >
-                        Login / Sign up
+                        Login / Sign up {/* replace with logout if logged in */}
                     </button>
-                    <h1>User</h1>
+                    <h1 className="pl-10 mt-4 text-xl">UserName of a User@!!</h1>
                 </div>
             </nav>
 
