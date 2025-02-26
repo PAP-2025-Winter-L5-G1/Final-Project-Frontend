@@ -2,6 +2,7 @@ import CommentCard from "../components/CommentCard";
 import Navbar from "../components/Navbar";
 import NewComment from "../components/NewComment";
 import Sidebar from "../components/Sidebar";
+import Modal from "../components/modal";
 
 export default function HomePage() {
 
@@ -9,9 +10,9 @@ export default function HomePage() {
         <main className="max-h-screen">
             {/* <Navbar/>
             <Sidebar/> */}
-            <NewComment/>
+            {/* <NewComment/> */}
             {/* <h1 className="text-3xl font-bold underline"> Home page </h1> */}
+            <Modal/>
         </main>
     );
-    
 }
