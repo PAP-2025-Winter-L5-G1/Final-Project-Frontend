@@ -6,6 +6,9 @@ import LoginPage from './pages/LoginPage.jsx'
 import SignupPage from './pages/SignupPage.jsx'
 import HomePage from './pages/HomePage.jsx'
 import PostViewer from './pages/PostViewer.jsx'
+import { AuthProvider } from './contexts/AuthContext.jsx'
+
+
 
 const router = createBrowserRouter([{
   path: '/',
@@ -23,6 +26,8 @@ const router = createBrowserRouter([{
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router = { router } />
+    <AuthProvider>
+      <RouterProvider router = { router } />
+    </AuthProvider>
   </StrictMode>,
 )
