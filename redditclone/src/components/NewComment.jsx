@@ -22,7 +22,7 @@ export default function NewComment ({postName, username, timestamp, closeHandler
                 </h3>
 
             </div>
-            <form className="grid justify-items-center mb-5">
+            <form id="commentBody" className="grid justify-items-center mb-5">
                 <textarea className="bg-blue-400 text-center resize-none min-w-[400%] max-w-[400%] mb-2" placeholder="say what you need to say 300 charter limit" rows={10} maxLength={300}>
                 </textarea>
                 <button

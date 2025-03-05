@@ -13,7 +13,7 @@ export default function NewPost ({username, timestamp, community, closeHandler})
         <div className="min-w-[95%] max-w-[95%] rounded-lg min-h-110 max-h-110 grid justify-items-center">
             <div className="min-w-[95%] max-w-[95%] min-h-30 max-h-30">
 
-                <form className="mt-5">
+                <form id="postHead" className="mt-5">
                     <textarea className="resize-none min-w-[50%] max-w-[50%] text-2xl" placeholder="Enter Post Header Here" rows={1} maxLength={100}>
                     </textarea>
                 </form>
@@ -25,7 +25,7 @@ export default function NewPost ({username, timestamp, community, closeHandler})
                 </h3>
 
             </div>
-            <form className="grid justify-items-center mb-5">
+            <form id="postBody" className="grid justify-items-center mb-5">
                 <textarea className="bg-blue-400 text-center resize-none min-w-[400%] max-w-[400%] mb-2" placeholder="say what you need to say 300 charter limit" rows={10} maxLength={300}>
                 </textarea>
 
