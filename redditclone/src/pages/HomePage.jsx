@@ -10,7 +10,7 @@ export default function HomePage() {
     return (
         <main>
             <Navbar/>
-            {/* <Sidebar/> */}
+            <Sidebar/>
             <div className="flex flex-col overflow-hidden h-screen grid-flow-col">
                 <div className="fixed max-w-300 max-h-180 min-h-180 bg-zinc-700 pr-5 pl-10 border-t-80 border-zinc-700 rounded-t-lg bottom-0 right-15 overflow-y-auto">
                     {/* ADD MAP FOR POSTS */}

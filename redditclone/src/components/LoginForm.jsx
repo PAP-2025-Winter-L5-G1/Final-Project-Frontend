@@ -35,7 +35,7 @@ export default function LoginForm() {
             
             fetch("http://localhost:3000/auth/login", requestOptions)
               .then((response) => response.text())
-              .then((result) => login(result.token)
+              .then((result) => login(result.token, data.username)
                 // navigate("/");
               )
               .catch((error) => console.error(error));        } 
@@ -51,8 +51,7 @@ export default function LoginForm() {
                     <h2 className="block text-3xl font-bold text-violet-200 mb-5"> Welcome! </h2> <br/>
                     <input type="text" className="placeholder-violet-200 text-3xl font-bold text-center flex bg-slate-50 rounded-lg min-h-15 max-w-xs min-w-xs" placeholder="Username" name="username"/> <br/>
                     <SeePassword state={false}/> <br/>
-                    <button className="min-w-25 min-h-10 bg-violet-200 rounded-md hover:bg-violet-300 mt-10 text-zinc-700 cursor-pointer"
-                    type="submit">
+                    <button className="min-w-25 min-h-10 bg-violet-200 rounded-md hover:bg-violet-300 mt-10 text-zinc-700 cursor-pointer">
                         Log In
                     </button>
                 </form>

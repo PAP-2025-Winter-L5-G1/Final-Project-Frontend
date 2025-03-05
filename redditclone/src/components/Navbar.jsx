@@ -2,7 +2,7 @@ import { useContext } from "react";
 import logo from "../assets/CFA-logo.png";
 import { AuthContext } from "../contexts/AuthContext";
 export default function Navbar() {
-    const {logout} = useContext(AuthContext);
+    const {logout, username} = useContext(AuthContext);
     return (
             <nav className = "flex justify-between px-8 py-4 sticky top-0 bg-white" >
 
@@ -18,7 +18,7 @@ export default function Navbar() {
                             logout()}}>
                         Logout
                     </button>
-                    <h1 className="pl-10 mt-4 text-xl">UserName of a User@!!</h1>
+                    <h1 className="pl-10 mt-4 text-xl"> {username} </h1>
                 </div>
             </nav>
     );
