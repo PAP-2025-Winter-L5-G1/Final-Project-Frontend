@@ -5,6 +5,7 @@ import { Navigate } from "react-router-dom";
 
 export default function LoginForm() {
     const {login, token} = useContext(AuthContext); 
+    // const navigate = useNavigate();
     if (token){
         return(
             <Navigate to={"/"}></Navigate>
@@ -34,10 +35,13 @@ export default function LoginForm() {
             
             fetch("http://localhost:3000/auth/login", requestOptions)
               .then((response) => response.text())
-              .then((result) => login(result.token))
+              .then((result) => login(result.token)
+                // navigate("/");
+              )
               .catch((error) => console.error(error));        } 
               catch (err) {
             console.log(err)
+            //insert logic for letting user know auth failed
         }    
     };
     return (

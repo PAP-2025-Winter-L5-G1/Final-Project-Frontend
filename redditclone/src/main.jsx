@@ -7,12 +7,13 @@ import SignupPage from './pages/SignupPage.jsx'
 import HomePage from './pages/HomePage.jsx'
 import PostViewer from './pages/PostViewer.jsx'
 import { AuthProvider } from './contexts/AuthContext.jsx'
+import RouteGuard from './components/RouteGuard.jsx'
 
 
 
 const router = createBrowserRouter([{
   path: '/',
-  element: <HomePage/>
+  element: <RouteGuard> <HomePage/> </RouteGuard>
 },{
   path: '/login',
   element: <LoginPage/>
