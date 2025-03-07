@@ -31,7 +31,7 @@ export default function NewPost ({community, communityId, userId, closeHandler})
               redirect: "follow"
             };
             
-            fetch("http://localhost:3000/auth/login", requestOptions) // change route when created in backend
+            fetch("http://localhost:3000/posts/newpost", requestOptions) // change route when created in backend
               .then((response) => response.text())
               .then((result) => console.log(result)) //change ?
               .catch((error) => console.error(error));

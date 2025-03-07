@@ -5,17 +5,13 @@ import PostCard from "../components/PostCard";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import NewPost from "../components/NewPost";
+import { useEffect, useState } from "react";
 
 export default function HomePage() {
-    let posts = [
-        { username: "username", date: "02/23/24", title: "title", body:"Hello this is my post"},
-        { username: "username", date: "02/23/24", title: "title", body:"Hello this is my post"},
-        { username: "username", date: "02/23/24", title: "title", body:"Hello this is my post"},
-        { username: "username", date: "02/23/24", title: "title", body:"Hello this is my post"},
-        { username: "username", date: "02/23/24", title: "title", body:"Hello this is my post"},
-        { username: "username", date: "02/23/24", title: "title", body:"Hello this is my post"},
-        { username: "username", date: "02/23/24", title: "title", body:"Hello this is my post"}
-    ];
+    const [posts, setPost] = useState([]);
+    useEffect(()=>{
+        fetch("http://localhost:3000/posts/getposts/0").then((result)=>{result.json()}).then((data)=>{setPost(data)})
+    }, [])
     return (
         <main>
             <Navbar/>
