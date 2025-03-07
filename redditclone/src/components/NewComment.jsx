@@ -1,11 +1,41 @@
-export default function NewComment ({postName, username, timestamp, closeHandler}) {
+import { useContext } from "react";
+import { AuthContext } from "../contexts/AuthContext";
+
+export default function NewComment ({postName, postId, userId, closeHandler}) {
+    const date = new Date();
+    const { username, token } = useContext(AuthContext);
     const submit = (e)=>{
         e.preventDefault();
         closeHandler();
+        const formData = new FormData(e.currentTarget);
+        const submitButton = e.currentTarget.querySelector('button[type="submit"]');
+        if (submitButton) submitButton.disabled = true;
+        let data = {
+            commentContent: formData.get("body"),
+            postId: postId,
+            userId: userId,
+            commentDate: date,
+            token: token
+        } 
         try{
-
-        }catch{
-
+            const myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json");
+            
+            const raw = JSON.stringify(data);
+            
+            const requestOptions = {
+              method: "POST",
+              headers: myHeaders,
+              body: raw,
+              redirect: "follow"
+            };
+            
+            fetch("http://localhost:3000/auth/login", requestOptions) // change route when created in backend
+              .then((response) => response.text())
+              .then((result) => console.log(result)) //change ?
+              .catch((error) => console.error(error));
+        }catch(err){
+            console.log(err)
         }
     }
     return (
@@ -18,16 +48,16 @@ export default function NewComment ({postName, username, timestamp, closeHandler
                     by: {username}
                 </h2>
                 <h3>
-                    {timestamp} timestamp
+                    {date.toUTCString()}
                 </h3>
 
             </div>
-            <form id="commentBody" className="grid justify-items-center mb-5">
-                <textarea className="bg-blue-400 text-center resize-none min-w-[400%] max-w-[400%] mb-2" placeholder="say what you need to say 300 charter limit" rows={10} maxLength={300}>
+            <form onSubmit={submit} id="commentBody" className="grid justify-items-center mb-5">
+                <textarea name="body" className="bg-blue-400 text-center resize-none min-w-[300%] max-w-[300%] mb-2" placeholder="say what you need to say 300 character limit" rows={10} maxLength={300}>
                 </textarea>
                 <button
-                className="rounded-md bg-green-600 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-green-700 focus:shadow-none active:bg-green-700 hover:bg-green-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none ml-2" 
-                onClick={submit}>
+                type="submit"
+                className="rounded-md bg-green-600 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-green-700 focus:shadow-none active:bg-green-700 hover:bg-green-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none ml-2" >
                     Submit
                 </button>
             </form>
