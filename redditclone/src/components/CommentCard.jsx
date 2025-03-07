@@ -1,6 +1,6 @@
 import LikeButton from './LikeButton';
 
-export default function CommentCard ({username, date, body}) {
+export default function CommentCard ({username, date, body, likeCount}) {
 
     return (
         <div className="flex justify-end">
@@ -11,7 +11,7 @@ export default function CommentCard ({username, date, body}) {
                 <div className="flex bg-purple-100 rounded-lg min-w-3xl pl-5 pr-5 pt-2 min-h-10 flex-col text-xs">
                     <p>{body}</p>
                 </div>
-                <LikeButton state={false} likeCount={200}/>
+                <LikeButton state={false} likeCount={likeCount}/>
             </div>
         </div> 
     );

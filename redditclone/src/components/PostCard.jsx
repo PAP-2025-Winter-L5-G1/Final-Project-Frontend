@@ -1,6 +1,6 @@
 import LikeButton from "./LikeButton";
 
-export default function PostCard ({username, date, title, body}) {
+export default function PostCard ({username, date, title, body, likeCount}) {
     const shortenText = (text, maxLen) => {
         return text.substring(0, maxLen) + '...';
     };
@@ -16,7 +16,7 @@ export default function PostCard ({username, date, title, body}) {
                 <div className="bg-purple-100 max-h-20 rounded-lg min-w-3xl min-h-20 text-xs px-5 pt-3"> 
                     {shortenText(body, 580)}
                 </div>
-                <LikeButton state={false} likeCount={20}/>
+                <LikeButton state={false} likeCount={likeCount}/>
 
             </div>
         </div> 

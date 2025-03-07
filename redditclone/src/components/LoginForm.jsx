@@ -50,14 +50,15 @@ export default function LoginForm() {
                 <form onSubmit={submit} className="flex bg-zinc-700 max-w-lg min-w-md rounded-lg pt-5 items-center text-center flex-col">
                     <h2 className="block text-3xl font-bold text-violet-200 mb-5"> Welcome! </h2> <br/>
                     <input type="text" className="placeholder-violet-200 text-3xl font-bold text-center flex bg-slate-50 rounded-lg min-h-15 max-w-xs min-w-xs" placeholder="Username" name="username"/> <br/>
-                    <SeePassword state={false}/> <br/>
-                    <button className="min-w-25 min-h-10 bg-violet-200 rounded-md hover:bg-violet-300 mt-10 text-zinc-700 cursor-pointer">
+                    <SeePassword state={false}/>
+                    <div className="flex m-auto min-w-md justify-left pl-17">
+                        <p className="flex text-violet-200">New User? <a className="ml-1 cursor-pointer underline" href="/signup">Sign Up Here!</a></p>
+                    </div>
+                    <button className="min-w-25 min-h-10 bg-violet-200 rounded-md hover:bg-violet-300 mt-5 text-zinc-700 cursor-pointer">
                         Log In
                     </button>
                 </form>
-                <div className="flex m-auto min-w-md justify-left pl-17">
-                    <p className="flex text-violet-200">New User? <a className="ml-1 cursor-pointer underline" href="/signup">Sign Up Here!</a></p>
-                </div>
+
 
             </div>
 

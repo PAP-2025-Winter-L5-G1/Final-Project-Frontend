@@ -4,10 +4,10 @@ import { AuthContext } from "../contexts/AuthContext";
 export default function Navbar() {
     const {logout, username} = useContext(AuthContext);
     return (
-            <nav className = "flex justify-between px-8 py-4 sticky top-0 bg-white" >
+            <nav className = "flex justify-between px-8 py-4 static top-0 bg-white" >
 
                 <div className = "flex">
-                    <img className = "pr-8 max-h-15" src = { logo }/>
+                    <a href="/"> <img className = "pr-8 max-h-15" src = { logo }/> </a>
                     <h1 className="text-2xl pt-3">Chatting For All</h1>
                 </div>
                 
