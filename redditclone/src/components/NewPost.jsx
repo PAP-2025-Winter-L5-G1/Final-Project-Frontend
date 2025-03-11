@@ -1,7 +1,8 @@
 import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
+import { useParams } from "react-router-dom";
 
-export default function NewPost ({community, communityId, userId, closeHandler}) {
+export default function NewPost ({community, communityId, closeHandler}) {
     const date = new Date();
     const { username, token } = useContext(AuthContext);
     const submit = (e)=>{
@@ -13,9 +14,9 @@ export default function NewPost ({community, communityId, userId, closeHandler})
         let data = {
             postHeader: formData.get("header"),
             postContent: formData.get("body"),
+            postCreator: username,
             communityId: communityId,
-            userId: userId,
-            commentDate: date,
+            postDate: date.toUTCString(),
             token: token
         } 
         try{
@@ -31,9 +32,9 @@ export default function NewPost ({community, communityId, userId, closeHandler})
               redirect: "follow"
             };
             
-            fetch("http://localhost:3000/auth/login", requestOptions) // change route when created in backend
+            fetch("http://localhost:3000/posts/newpost", requestOptions) 
               .then((response) => response.text())
-              .then((result) => console.log(result)) //change ?
+              .then((result) => console.log(result)) 
               .catch((error) => console.error(error));
         }catch(err){
             console.log(err)
@@ -53,7 +54,7 @@ export default function NewPost ({community, communityId, userId, closeHandler})
                     {date.toUTCString()}
                 </h3>
                 <div className="grid justify-items-center mb-5">
-                    <textarea className="bg-blue-400 text-center resize-none min-w-[100%] max-w-[100%] mb-2" placeholder="say what you need to say 300 charter limit" rows={10} maxLength={300} name="body">
+                    <textarea className="bg-blue-400 text-left resize-none min-w-[100%] max-w-[100%] mb-2" placeholder="say what you need to say 1500 character limit" rows={10} maxLength={1500} name="body">
                     </textarea>
                 </div>
 

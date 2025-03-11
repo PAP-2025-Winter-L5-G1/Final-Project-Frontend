@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function Modal({ Content, buttonText, st }) {
+export default function Modal({ Content, buttonText, st, communityId }) {
   const [open, setOpen] = useState(false);
   return (
     <>
@@ -25,7 +25,7 @@ export default function Modal({ Content, buttonText, st }) {
             className="relative m-4 p-4 min-w-[40%] max-w-[40%] rounded-lg bg-white shadow-sm"
           >
             <div className=" grid justify-items-center">
-              <Content closeHandler={() => setOpen(false)}/>
+              <Content closeHandler={() => setOpen(false)} communityId={communityId}/>
             </div>
           </div>
         </div>
