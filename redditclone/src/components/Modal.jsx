@@ -8,8 +8,8 @@ export default function Modal({ Content, buttonText, st, communityId }) {
         onClick={() => {
           setOpen(true);
         }}
-        className={st?"rounded-lg bg-black py-2 px-14 border border-transparent text-center text-sm text-white":
-          "rounded-lg bg-black py-2 px-10 border border-transparent text-center text-sm text-white"}//true is for add comments btn false is for add post btn
+        className={st?"rounded-lg bg-purple-100 py-2 px-14 border border-transparent text-center text-sm text-zinc-700 cursor-pointer":
+          "rounded-lg bg-purple-100 py-2 px-10 border border-transparent text-center text-sm text-zinc-700 cursor-pointer"}//true is for add comments btn false is for add post btn
       >
         {buttonText}
       </button>
@@ -22,7 +22,7 @@ export default function Modal({ Content, buttonText, st, communityId }) {
         >
           <div
             onClick={(e) => e.stopPropagation()} // Prevent click propagation
-            className="relative m-4 p-4 min-w-[40%] max-w-[40%] rounded-lg bg-white shadow-sm"
+            className="relative m-4 p-4 min-w-[40%] max-w-[40%] rounded-lg bg-purple-50 shadow-sm"
           >
             <div className=" grid justify-items-center">
               <Content closeHandler={() => setOpen(false)} communityId={communityId}/>

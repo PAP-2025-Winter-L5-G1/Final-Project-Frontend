@@ -18,18 +18,25 @@ export default function PostCard ({username, date, title, body, postId, wholePos
                     <h2>{title}</h2>
                 </div>
                 {wholePostView?(
+                    <>
                     <div className="bg-purple-100 max-h-20 rounded-lg min-w-3xl min-h-53 text-xs px-5 pt-3"> 
                     {body}
                     </div>
+                    <LikeButton state={false} postId={postId}/>
+                    </>
                 ):(
+                    <>
                     <div className="bg-purple-100 max-h-20 rounded-lg min-w-3xl min-h-20 text-xs px-5 pt-3"> 
                         {shortenText(body, 330)+"..."}
                         <button className="cursor-pointer underline" onClick={()=>{navigate("/post/"+postId)}}> 
                             See More
                         </button>
                     </div>
+                    <LikeButton state={false} postId={postId}/>
+                    </>
+
+                    
                 )}
-                <LikeButton state={false} postId={postId}/>
 
             </div>
         </div> 

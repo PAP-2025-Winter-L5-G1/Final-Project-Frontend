@@ -47,11 +47,11 @@ export default function LikeButton({state, postId}) {
     };
     useEffect(()=>{
         fetchLikeCount();
-    }, []);
+    }, [postId]);
 
     useEffect(() => {
         fetchLikeStatus();
-    }, []);
+    }, [likeCount]);
 
     const onButtonClicked= ()=>{
         fetchLikeToggle()

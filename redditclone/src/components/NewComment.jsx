@@ -41,9 +41,9 @@ export default function NewComment ({postName, closeHandler}) {
         }
     }
     return (
-        <div className="min-w-[95%] max-w-[95%] rounded-lg min-h-110 max-h-110 grid justify-items-center">
+        <div className="min-w-[95%] max-w-[95%] rounded-lg min-h-110 max-h-110 grid">
             <div className="min-w-[95%] max-w-[95%] min-h-30 max-h-30">
-                <h1 className="mt-5 text-2xl pb-2">
+                <h1 className="mt-5 text-2xl">
                     Write a comment for {postName} post below
                 </h1>
                 <h2>
@@ -52,14 +52,16 @@ export default function NewComment ({postName, closeHandler}) {
                 <h3>
                     {date.toUTCString()}
                 </h3>
-
             </div>
-            <form onSubmit={submit} id="commentBody" className="grid justify-items-center mb-5">
-                <textarea name="body" className="bg-blue-400 text-center resize-none min-w-[300%] max-w-[300%] mb-2" placeholder="say what you need to say 300 character limit" rows={10} maxLength={300}>
-                </textarea>
+            <form onSubmit={submit} id="commentBody">
+                <div className="grid justify-items-center mb-2">
+                    <textarea name="body" className="bg-purple-100 text-left resize-none min-w-[100%] max-w-[100%] p-5" placeholder="say what you need to say 300 character limit" rows={10} maxLength={300}>
+                    </textarea>
+                </div>
+
                 <button
                 type="submit"
-                className="rounded-md bg-green-600 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-green-700 focus:shadow-none active:bg-green-700 hover:bg-green-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none ml-2" >
+                className="rounded-md bg-zinc-700 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-zinc-800 focus:shadow-none active:bg-zinc-800 hover:bg-zinc-800 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none ml-2" >
                     Submit
                 </button>
             </form>
