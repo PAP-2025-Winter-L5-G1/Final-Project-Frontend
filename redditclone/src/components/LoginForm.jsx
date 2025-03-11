@@ -34,14 +34,18 @@ export default function LoginForm() {
             };
             
             fetch("http://localhost:3000/auth/login", requestOptions)
-              .then((response) => response.text())
+              .then((response) => 
+                {if(!response.ok){
+                    alert("Invalid password or username") //insert logic for letting user know auth failed
+                    throw new Error("invalid auth")
+                }
+                return response.json()})
               .then((result) => login(result.token, data.username)
-                // navigate("/");
               )
               .catch((error) => console.error(error));        } 
               catch (err) {
             console.log(err)
-            //insert logic for letting user know auth failed
+
         }    
     };
     return (
@@ -50,11 +54,11 @@ export default function LoginForm() {
                 <form onSubmit={submit} className="flex bg-zinc-700 max-w-lg min-w-md rounded-lg pt-5 items-center text-center flex-col">
                     <h2 className="block text-3xl font-bold text-violet-200 mb-5"> Welcome! </h2> <br/>
                     <input type="text" className="placeholder-violet-200 text-3xl font-bold text-center flex bg-slate-50 rounded-lg min-h-15 max-w-xs min-w-xs" placeholder="Username" name="username"/> <br/>
-                    <SeePassword state={false}/>
+                    <SeePassword state={false} style={true}/>
                     <div className="flex m-auto min-w-md justify-left pl-17">
                         <p className="flex text-violet-200">New User? <a className="ml-1 cursor-pointer underline" href="/signup">Sign Up Here!</a></p>
                     </div>
-                    <button className="min-w-25 min-h-10 bg-violet-200 rounded-md hover:bg-violet-300 mt-5 text-zinc-700 cursor-pointer">
+                    <button className="min-w-25 min-h-10 bg-violet-200 rounded-md hover:bg-violet-300 mt-8 text-zinc-700 cursor-pointer">
                         Log In
                     </button>
                 </form>

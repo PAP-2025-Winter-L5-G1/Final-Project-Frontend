@@ -1,3 +1,4 @@
+import { Navigate } from "react-router-dom";
 import SeePassword from "./SeePassword";
 
 export default function SignupForm() {
@@ -9,7 +10,6 @@ export default function SignupForm() {
         let data = {
             username: formData.get("username"),
             password: formData.get("password"),
-            // confirmPassword: formData.get("confirmPassword")
         } 
         try {
             const myHeaders = new Headers();
@@ -26,7 +26,7 @@ export default function SignupForm() {
             
             fetch("http://localhost:3000/auth/register", requestOptions)
               .then((response) => response.text())
-              .then((result) => console.log(result))
+              .then((result) => console.log(result), <Navigate to={"/"}></Navigate>)
               .catch((error) => console.error(error));        
         } catch (err) {
             console.log(err)
@@ -38,9 +38,11 @@ export default function SignupForm() {
                 <form onSubmit={submit} className="flex bg-zinc-700 max-w-lg min-w-md rounded-lg pt-5 items-center text-center flex-col">
                     <h2 className="block text-3xl font-bold text-violet-200 mb-5"> Welcome! </h2> <br/>
                     <input type="text" className="placeholder-violet-200 text-2xl font-bold text-center flex bg-slate-50 rounded-lg min-h-15 max-w-xs min-w-xs" placeholder="Create Username" name="username"/> <br/>
-                    <SeePassword state={false}/> <br/>
-                    {/* <input type="text" className="placeholder-violet-200 text-2xl font-bold text-center flex bg-slate-50 rounded-lg min-h-15 max-w-xs min-w-xs" placeholder="Confirm Password" name="confirmPassword"/> <br/> */}
-                    <button className="min-w-25 min-h-10 bg-violet-200 rounded-md hover:bg-violet-300 mt-10 text-zinc-700 cursor-pointer"
+                    <SeePassword style={false} state={false}/>
+                    <div className="flex m-auto min-w-md justify-left pl-17">
+                        <p className="flex text-violet-200">Already have an account? <a className="ml-1 cursor-pointer underline" href="/login">Login Here!</a></p>
+                    </div>
+                    <button className="min-w-25 min-h-10 bg-violet-200 rounded-md hover:bg-violet-300 mt-8 text-zinc-700 cursor-pointer"
                     type="submit">
                         Sign Up
                     </button>

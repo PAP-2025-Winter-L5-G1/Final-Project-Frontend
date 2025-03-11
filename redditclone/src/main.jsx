@@ -15,14 +15,17 @@ const router = createBrowserRouter([{
   path: '/',
   element: <RouteGuard> <HomePage/> </RouteGuard>
 },{
+  path: '/:communityId',
+  element: <RouteGuard> <HomePage/> </RouteGuard>
+},{
   path: '/login',
   element: <LoginPage/>
 },{
   path: '/signup',
   element: <SignupPage/>
 },{
-  path: '/post', /* take in id of post, list post/component name at end of url - dynamic routing */
-  element: <PostViewer/>
+  path: '/post/:postId', /* take in id of post, list post/component name at end of url - dynamic routing */
+  element: <RouteGuard> <PostViewer/> </RouteGuard>
 }]);
 
 createRoot(document.getElementById('root')).render(

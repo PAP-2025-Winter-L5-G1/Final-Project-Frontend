@@ -1,8 +1,10 @@
 import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
+import { useParams } from "react-router-dom";
 
-export default function NewComment ({postName, postId, userId, closeHandler}) {
+export default function NewComment ({postName, closeHandler}) {
     const date = new Date();
+    const {postId} = useParams();
     const { username, token } = useContext(AuthContext);
     const submit = (e)=>{
         e.preventDefault();
@@ -11,10 +13,10 @@ export default function NewComment ({postName, postId, userId, closeHandler}) {
         const submitButton = e.currentTarget.querySelector('button[type="submit"]');
         if (submitButton) submitButton.disabled = true;
         let data = {
-            commentContent: formData.get("body"),
             postId: postId,
-            userId: userId,
-            commentDate: date,
+            commentContent: formData.get("body"),
+            commentCreator: username,
+            commentDate: date.toUTCString(),
             token: token
         } 
         try{
@@ -30,9 +32,9 @@ export default function NewComment ({postName, postId, userId, closeHandler}) {
               redirect: "follow"
             };
             
-            fetch("http://localhost:3000/auth/login", requestOptions) // change route when created in backend
+            fetch("http://localhost:3000/comments/newcomment", requestOptions) 
               .then((response) => response.text())
-              .then((result) => console.log(result)) //change ?
+              .then((result) => console.log(result)) 
               .catch((error) => console.error(error));
         }catch(err){
             console.log(err)
